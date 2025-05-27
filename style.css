@@ -1,0 +1,373 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+/* Navigation Bar */
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 20px;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.nav-container {
+  display: flex;
+  gap: 20px;
+  
+}
+
+nav a {
+  color: rgb(0, 0, 0);
+  margin: 0 20px;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.home nav a {
+  color: rgb(255, 255, 255);
+}
+
+nav.scrolled {
+  background-color: rgba(255, 255, 255, 0.5)!important;; /* Lower opacity for frosty softness */
+backdrop-filter: blur(8px);                 /* This creates the frosted glass effect */
+-webkit-backdrop-filter: blur(8px);         /* Safari support */
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);   /* Soft shadow to lift it a bit */  
+border: 1px solid rgba(255, 255, 255, 0.3);  /* Subtle border for glass edge */   
+
+}
+
+nav.scrolled a {
+  color: black;
+}
+
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  .nav-container {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .nav-container.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+/* Hero Section */
+#header {
+  position: relative;
+  z-index: 0;
+  width: 100vw;
+  height: 60vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: background-image 0.4s ease;
+  overflow: hidden;
+
+}
+
+#header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 65%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  opacity: 1;
+  margin-bottom: 3rem; 
+}
+
+#header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: px; /* adjust based on how long you want the fade */
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, white 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.exile-text {
+      font-family: 'Exile', sans-serif;
+      font-size: 400%;
+      background: linear-gradient(to right, white, #b8c8d8); /* white to blue */
+      -webkit-background-clip: text;
+
+      /* Outline */
+      -webkit-text-stroke: 1px #000000; /* thin blue outline */
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8); /* optional soft shadow */
+}
+
+ button {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 10px 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+     button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.03);
+    }
+
+/* General Sections */
+section {
+  width: 100%;
+  min-height: 60px;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-bottom: 3rem; /* Adds space between sections */
+}
+
+.content img {
+  outline-offset: 4px;                        
+  border-radius: 12px;
+  display: block; 
+  margin: 2rem auto; /* adds top/bottom margin and centers the image horizontally */   /* optional: space *inside* the border */
+  box-sizing: border-box;
+}
+
+#intro {
+  font-size: 2rem;
+  margin-bottom: 1rem; /* Space after Introduction section */
+}
+
+
+.wrap-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.fade-container {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.warped-text {
+  flex: 1;
+  min-width: 250px;
+} 
+
+.fade-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.fade-img.after {
+  opacity: 0;
+}
+
+.fade-container:hover .fade-img.after {
+  opacity: 1;
+}
+
+.fade-container:hover .fade-img.before {
+  opacity: 0;
+}
+
+/* Timeline Container */
+.timeline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  padding: 40px 0;
+  position: relative;
+  
+}
+
+/* Timeline Point */
+.timeline-point {
+  position: relative;
+  width: 30px; /* Outer circle size */
+  height: 30px; /* Outer circle size */
+  background: #4b8231;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Inner Circle */
+.inner-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px; /* Inner circle size */
+  height: 20px; /* Inner circle size */
+  background: #ffffff; /* Inner circle color */
+  border-radius: 50%;
+  transform: translate(-50%, -50%); /* Center it inside the outer circle */
+  z-index: 3;
+}
+
+/* Popup Styles */
+.popup {
+  position: absolute;
+  top: -220px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  padding: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+  text-align: center;
+}
+
+.popup img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+  border-radius: 5px;
+}
+
+.timeline-point:hover .popup {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Timeline line (optional) */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #ccc;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.calc main {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #f0f8f5;
+  border-radius: 8px;
+}
+.calc label {
+  display: block;
+  margin: 1rem 0 0.25rem;
+}
+.calc input[type="number"] {
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1rem;
+}
+.calc utton {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #4b8231;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.calc button:hover {
+  background-color: #3a6626;
+}
+
+
+/* Footer */
+footer {
+  width: 100%;
+  min-height: 100px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer a {
+  color: white;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
